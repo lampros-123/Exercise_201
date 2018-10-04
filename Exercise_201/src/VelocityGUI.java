@@ -5,11 +5,11 @@
  */
 public class VelocityGUI extends javax.swing.JFrame {
 
-    /**
-     * Creates new form VelocityGUI
-     */
+    VelocityTableModel model = new VelocityTableModel();
+    
     public VelocityGUI() {
         initComponents();
+        tableVelcoity.setModel(model);
     }
 
     /**
@@ -26,12 +26,16 @@ public class VelocityGUI extends javax.swing.JFrame {
         miDelete = new javax.swing.JMenuItem();
         miAvg = new javax.swing.JMenuItem();
         miSpook = new javax.swing.JMenuItem();
-        checkbox1 = new java.awt.Checkbox();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tableVelcoity = new javax.swing.JTable();
 
         miAdd.setText("Hinzufügen");
+        miAdd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                miAddActionPerformed(evt);
+            }
+        });
         jPopupMenu1.add(miAdd);
 
         miDelete.setText("Löschen");
@@ -43,11 +47,12 @@ public class VelocityGUI extends javax.swing.JFrame {
         miSpook.setText("ScarySkeletons");
         jPopupMenu1.add(miSpook);
 
-        checkbox1.setLabel("checkbox1");
-
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Messungen"));
+        jPanel1.setComponentPopupMenu(jPopupMenu1);
+
+        jScrollPane1.setComponentPopupMenu(jPopupMenu1);
 
         tableVelcoity.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -60,6 +65,8 @@ public class VelocityGUI extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tableVelcoity.setCellSelectionEnabled(true);
+        tableVelcoity.setComponentPopupMenu(jPopupMenu1);
         jScrollPane1.setViewportView(tableVelcoity);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -95,6 +102,15 @@ public class VelocityGUI extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void miAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miAddActionPerformed
+        VelocityDlg dialog = new VelocityDlg(this, true);
+        dialog.setVisible(true);
+        
+        if(dialog.getMeasurement() != null) {
+            model.add(dialog.getMeasurement());
+        }
+    }//GEN-LAST:event_miAddActionPerformed
 
     /**
      * @param args the command line arguments
@@ -132,7 +148,6 @@ public class VelocityGUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private java.awt.Checkbox checkbox1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JScrollPane jScrollPane1;
