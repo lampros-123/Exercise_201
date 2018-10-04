@@ -81,6 +81,11 @@ public class VelocityDlg extends javax.swing.JDialog {
         getContentPane().add(btAdd);
 
         btCancel.setText("Abbrechen");
+        btCancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btCancelActionPerformed(evt);
+            }
+        });
         getContentPane().add(btCancel);
 
         pack();
@@ -99,6 +104,11 @@ public class VelocityDlg extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(this, "Pleas make sure to enter doubles, and to enter the date and time in the correct format");
         }
     }//GEN-LAST:event_btAddActionPerformed
+
+    private void btCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCancelActionPerformed
+        measurement = null;
+        this.dispose();
+    }//GEN-LAST:event_btCancelActionPerformed
 
     public Measurement getMeasurement() {
         return measurement;
