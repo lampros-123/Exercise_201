@@ -21,9 +21,29 @@ public class VelocityGUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPopupMenu1 = new javax.swing.JPopupMenu();
+        miAdd = new javax.swing.JMenuItem();
+        miDelete = new javax.swing.JMenuItem();
+        miAvg = new javax.swing.JMenuItem();
+        miSpook = new javax.swing.JMenuItem();
+        checkbox1 = new java.awt.Checkbox();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tableVelcoity = new javax.swing.JTable();
+
+        miAdd.setText("Hinzufügen");
+        jPopupMenu1.add(miAdd);
+
+        miDelete.setText("Löschen");
+        jPopupMenu1.add(miDelete);
+
+        miAvg.setText("Durchschnitt");
+        jPopupMenu1.add(miAvg);
+
+        miSpook.setText("ScarySkeletons");
+        jPopupMenu1.add(miSpook);
+
+        checkbox1.setLabel("checkbox1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -112,8 +132,14 @@ public class VelocityGUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private java.awt.Checkbox checkbox1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JMenuItem miAdd;
+    private javax.swing.JMenuItem miAvg;
+    private javax.swing.JMenuItem miDelete;
+    private javax.swing.JMenuItem miSpook;
     private javax.swing.JTable tableVelcoity;
     // End of variables declaration//GEN-END:variables
 }
