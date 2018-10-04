@@ -1,5 +1,6 @@
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 /**
  *
@@ -18,8 +19,11 @@ public class Measurement {
         this.legal = legal;
     }
 
-    public LocalDateTime getDatetime() {
-        return datetime;
+    public String getDate() {
+        return datetime.format(DateTimeFormatter.ofPattern("dd.MM.yyyy"));
+    }
+    public String getTime() {
+        return datetime.format(DateTimeFormatter.ofPattern("HH:mm"));
     }
 
     public String getKennzeichen() {

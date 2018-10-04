@@ -1,4 +1,5 @@
 
+import java.util.ArrayList;
 import javax.swing.table.AbstractTableModel;
 
 /**
@@ -7,21 +8,30 @@ import javax.swing.table.AbstractTableModel;
  */
 public class VelocityTableModel extends AbstractTableModel{
     
-    
+    ArrayList<Measurement> measurements = new ArrayList<>();
 
     @Override
     public int getRowCount() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return measurements.size();
     }
 
     @Override
     public int getColumnCount() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return 6;
     }
 
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Measurement m = measurements.get(rowIndex);
+        switch(columnIndex) {
+            case 0: return m.getDate();
+            case 1: return m.getTime();
+            case 2: return m.getKennzeichen();
+            case 3: return m.getMeasured();
+            case 4: return m.getLegal();
+            case 5: return m.getExceedence();
+            default: return "???";
+        }
     }
     
 }
