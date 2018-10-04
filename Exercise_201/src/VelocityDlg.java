@@ -1,10 +1,17 @@
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import javax.swing.JOptionPane;
+
+
 /**
  *
  * @author Matthias
  */
 public class VelocityDlg extends javax.swing.JDialog {
 
+    private Measurement measurement = null;
+    
     public VelocityDlg(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -80,9 +87,25 @@ public class VelocityDlg extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAddActionPerformed
-        
+        try {
+            String dateTimeStr = String.format("%s %s", tfDate.getText(), tfTime.getText());
+            LocalDateTime dateTime = LocalDateTime.parse(dateTimeStr, DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm"));
+            double measured = Double.parseDouble(tfMeasured.getText());
+            double legal = Double.parseDouble(tfLegal.getText());
+
+            measurement = new Measurement(dateTime, tfKennzeichen.getText(), measured, legal);
+            this.dispose();
+        } catch(Exception e) {
+            JOptionPane.showMessageDialog(this, "Pleas make sure to enter doubles, and to enter the date and time in the correct format");
+        }
     }//GEN-LAST:event_btAddActionPerformed
 
+    public Measurement getMeasurement() {
+        return measurement;
+    }
+
+    
+    
     /**
      * @param args the command line arguments
      */
