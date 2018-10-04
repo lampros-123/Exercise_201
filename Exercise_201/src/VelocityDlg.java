@@ -5,9 +5,6 @@
  */
 public class VelocityDlg extends javax.swing.JDialog {
 
-    /**
-     * Creates new form VelocityDlg
-     */
     public VelocityDlg(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -23,17 +20,17 @@ public class VelocityDlg extends javax.swing.JDialog {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        tfDate = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        tfTime = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        tfKennzeichen = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
+        tfMeasured = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        tfLegal = new javax.swing.JTextField();
+        btAdd = new javax.swing.JButton();
+        btCancel = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new java.awt.GridLayout(6, 2));
@@ -41,41 +38,50 @@ public class VelocityDlg extends javax.swing.JDialog {
         jLabel1.setText("Datum:");
         getContentPane().add(jLabel1);
 
-        jTextField1.setText("29.02.2017");
-        getContentPane().add(jTextField1);
+        tfDate.setText("29.02.2017");
+        getContentPane().add(tfDate);
 
         jLabel2.setText("Uhrzeit:");
         getContentPane().add(jLabel2);
 
-        jTextField2.setText("07:55");
-        getContentPane().add(jTextField2);
+        tfTime.setText("07:55");
+        getContentPane().add(tfTime);
 
         jLabel3.setText("Kennzeichen:");
         getContentPane().add(jLabel3);
 
-        jTextField3.setText("GU-SPOOKY-1");
-        getContentPane().add(jTextField3);
+        tfKennzeichen.setText("GU-SPOOKY-1");
+        getContentPane().add(tfKennzeichen);
 
         jLabel4.setText("V-Gemessen:");
         getContentPane().add(jLabel4);
 
-        jTextField4.setText("123");
-        getContentPane().add(jTextField4);
+        tfMeasured.setText("123");
+        getContentPane().add(tfMeasured);
 
         jLabel5.setText("V-Erlaubt:");
         getContentPane().add(jLabel5);
 
-        jTextField5.setText("80");
-        getContentPane().add(jTextField5);
+        tfLegal.setText("80");
+        getContentPane().add(tfLegal);
 
-        jButton1.setText("jButton1");
-        getContentPane().add(jButton1);
+        btAdd.setText("Übernehmen");
+        btAdd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btAddActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btAdd);
 
-        jButton2.setText("jButton1");
-        getContentPane().add(jButton2);
+        btCancel.setText("Abbrechen");
+        getContentPane().add(btCancel);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAddActionPerformed
+        
+    }//GEN-LAST:event_btAddActionPerformed
 
     /**
      * @param args the command line arguments
@@ -120,17 +126,17 @@ public class VelocityDlg extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton btAdd;
+    private javax.swing.JButton btCancel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
+    private javax.swing.JTextField tfDate;
+    private javax.swing.JTextField tfKennzeichen;
+    private javax.swing.JTextField tfLegal;
+    private javax.swing.JTextField tfMeasured;
+    private javax.swing.JTextField tfTime;
     // End of variables declaration//GEN-END:variables
 }
