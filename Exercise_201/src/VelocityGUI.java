@@ -2,7 +2,8 @@
 import java.io.File;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
-
+import java.time.LocalDateTime;
+import java.time.Month;
 
 /**
  *
@@ -11,10 +12,12 @@ import javax.swing.JOptionPane;
 public class VelocityGUI extends javax.swing.JFrame {
 
     VelocityTableModel model = new VelocityTableModel();
-    
+
     public VelocityGUI() {
         initComponents();
         tableVelcoity.setModel(model);
+        tableVelcoity.setDefaultRenderer(
+                Object.class, new MyTableCellRenderer());
         try{
             JFileChooser chooser = new JFileChooser(new File("."));
             int result = chooser.showOpenDialog(this);
@@ -25,6 +28,7 @@ public class VelocityGUI extends javax.swing.JFrame {
         } catch(Exception e) {
             JOptionPane.showMessageDialog(this, "unable to load data");
         }
+        model.add(new Measurement(LocalDateTime.of(2002, Month.MARCH, 3, 23, 50), "DL-BOI1", 50, 30));
     }
     
 
@@ -137,8 +141,8 @@ public class VelocityGUI extends javax.swing.JFrame {
     private void miAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miAddActionPerformed
         VelocityDlg dialog = new VelocityDlg(this, true);
         dialog.setVisible(true);
-        
-        if(dialog.getMeasurement() != null) {
+
+        if (dialog.getMeasurement() != null) {
             model.add(dialog.getMeasurement());
         }
     }//GEN-LAST:event_miAddActionPerformed
