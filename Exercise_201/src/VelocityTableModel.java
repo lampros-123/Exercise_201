@@ -1,4 +1,10 @@
 
+import java.io.EOFException;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import javax.swing.table.AbstractTableModel;
 
@@ -39,4 +45,27 @@ public class VelocityTableModel extends AbstractTableModel{
         fireTableRowsInserted(measurements.size()-1, measurements.size()-1);
     }
     
+    public void saveData(File f) throws Exception {
+        ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(f));
+
+        for (Measurement measurement : measurements) {
+            oos.writeObject(measurement);
+        }
+        
+        oos.close();
+    }
+    
+    public void loadData(File f) throws Exception {
+        ObjectInputStream ois = new ObjectInputStream(new FileInputStream(f));
+        
+        try {
+            Object measurement;
+            while((measurement = ois.readObject()) != null) {
+                measurements.add((Measurement) measurement);
+            }
+        } catch (EOFException e) {
+        }
+        
+        ois.close();
+    }
 }

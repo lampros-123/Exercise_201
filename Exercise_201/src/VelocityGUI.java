@@ -1,4 +1,8 @@
 
+import java.io.File;
+import javax.swing.JOptionPane;
+
+
 /**
  *
  * @author Matthias
@@ -6,10 +10,16 @@
 public class VelocityGUI extends javax.swing.JFrame {
 
     VelocityTableModel model = new VelocityTableModel();
+    File f = new File("./data.ser");
     
     public VelocityGUI() {
         initComponents();
         tableVelcoity.setModel(model);
+        try{
+            model.loadData(f);
+        } catch(Exception e) {
+            JOptionPane.showMessageDialog(this, "unable to load data");
+        }
     }
 
     /**
@@ -48,6 +58,11 @@ public class VelocityGUI extends javax.swing.JFrame {
         jPopupMenu1.add(miSpook);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Messungen"));
         jPanel1.setComponentPopupMenu(jPopupMenu1);
@@ -111,6 +126,14 @@ public class VelocityGUI extends javax.swing.JFrame {
             model.add(dialog.getMeasurement());
         }
     }//GEN-LAST:event_miAddActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        try {
+            model.saveData(f);
+        } catch(Exception e) {
+            JOptionPane.showMessageDialog(this, "couldn't save data");
+        }
+    }//GEN-LAST:event_formWindowClosing
 
     /**
      * @param args the command line arguments
