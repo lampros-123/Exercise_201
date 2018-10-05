@@ -1,4 +1,7 @@
 
+import java.time.LocalDateTime;
+import java.time.Month;
+
 /**
  *
  * @author Matthias
@@ -6,10 +9,13 @@
 public class VelocityGUI extends javax.swing.JFrame {
 
     VelocityTableModel model = new VelocityTableModel();
-    
+
     public VelocityGUI() {
         initComponents();
         tableVelcoity.setModel(model);
+        tableVelcoity.setDefaultRenderer(
+                Object.class, new MyTableCellRenderer());
+        model.add(new Measurement(LocalDateTime.of(2002, Month.MARCH, 3, 23, 50), "DL-BOI1", 50, 30));
     }
 
     /**
@@ -106,8 +112,8 @@ public class VelocityGUI extends javax.swing.JFrame {
     private void miAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miAddActionPerformed
         VelocityDlg dialog = new VelocityDlg(this, true);
         dialog.setVisible(true);
-        
-        if(dialog.getMeasurement() != null) {
+
+        if (dialog.getMeasurement() != null) {
             model.add(dialog.getMeasurement());
         }
     }//GEN-LAST:event_miAddActionPerformed

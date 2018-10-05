@@ -6,9 +6,10 @@ import javax.swing.table.AbstractTableModel;
  *
  * @author Matthias
  */
-public class VelocityTableModel extends AbstractTableModel{
-    
+public class VelocityTableModel extends AbstractTableModel {
+
     ArrayList<Measurement> measurements = new ArrayList<>();
+    private static String[] names = {"Datum", "Zeit", "Kennzeichen", "Gemessen", "Erlaubt", "Übertretung"};
 
     @Override
     public int getRowCount() {
@@ -23,20 +24,17 @@ public class VelocityTableModel extends AbstractTableModel{
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
         Measurement m = measurements.get(rowIndex);
-        switch(columnIndex) {
-            case 0: return m.getDate();
-            case 1: return m.getTime();
-            case 2: return m.getKennzeichen();
-            case 3: return m.getMeasured();
-            case 4: return m.getLegal();
-            case 5: return m.getExceedence();
-            default: return "???";
-        }
+        return m;
     }
-    
+
     public void add(Measurement m) {
         measurements.add(m);
-        fireTableRowsInserted(measurements.size()-1, measurements.size()-1);
+        fireTableRowsInserted(measurements.size() - 1, measurements.size() - 1);
     }
-    
+
+    @Override
+    public String getColumnName(int column) {
+        return names[column];
+    }
+
 }
