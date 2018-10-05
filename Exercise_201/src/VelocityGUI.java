@@ -1,5 +1,6 @@
 
 import java.io.File;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
 
@@ -10,17 +11,22 @@ import javax.swing.JOptionPane;
 public class VelocityGUI extends javax.swing.JFrame {
 
     VelocityTableModel model = new VelocityTableModel();
-    File f = new File("./data.ser");
     
     public VelocityGUI() {
         initComponents();
         tableVelcoity.setModel(model);
         try{
-            model.loadData(f);
+            JFileChooser chooser = new JFileChooser(new File("."));
+            int result = chooser.showOpenDialog(this);
+
+            if(result == JFileChooser.APPROVE_OPTION) {
+                model.loadData(chooser.getSelectedFile());
+            }
         } catch(Exception e) {
             JOptionPane.showMessageDialog(this, "unable to load data");
         }
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -139,14 +145,19 @@ public class VelocityGUI extends javax.swing.JFrame {
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         try {
-            model.saveData(f);
+            JFileChooser chooser = new JFileChooser(new File("."));
+            int result = chooser.showSaveDialog(this);
+
+            if(result == JFileChooser.APPROVE_OPTION) {
+                model.saveData(chooser.getSelectedFile());
+            }
         } catch(Exception e) {
             JOptionPane.showMessageDialog(this, "couldn't save data");
         }
     }//GEN-LAST:event_formWindowClosing
 
     private void miAvgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miAvgActionPerformed
-        // TODO add your handling code here:
+        JOptionPane.showMessageDialog(this, model.getAverage());
     }//GEN-LAST:event_miAvgActionPerformed
 
     private void miDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miDeleteActionPerformed

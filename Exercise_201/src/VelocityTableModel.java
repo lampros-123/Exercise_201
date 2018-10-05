@@ -50,6 +50,17 @@ public class VelocityTableModel extends AbstractTableModel{
         fireTableRowsDeleted(idx, idx);
     }
     
+    public double getAverage() {
+        if(measurements.isEmpty()) {
+            return 0;
+        }
+        double avg = 0;
+        for (Measurement measurement : measurements) {
+            avg += measurement.getExceedence();
+        }
+        return avg / measurements.size();
+    }
+    
     public void saveData(File f) throws Exception {
         ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(f));
 
