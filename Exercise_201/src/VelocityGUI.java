@@ -49,9 +49,19 @@ public class VelocityGUI extends javax.swing.JFrame {
         jPopupMenu1.add(miAdd);
 
         miDelete.setText("Löschen");
+        miDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                miDeleteActionPerformed(evt);
+            }
+        });
         jPopupMenu1.add(miDelete);
 
         miAvg.setText("Durchschnitt");
+        miAvg.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                miAvgActionPerformed(evt);
+            }
+        });
         jPopupMenu1.add(miAvg);
 
         miSpook.setText("ScarySkeletons");
@@ -134,6 +144,18 @@ public class VelocityGUI extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "couldn't save data");
         }
     }//GEN-LAST:event_formWindowClosing
+
+    private void miAvgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miAvgActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_miAvgActionPerformed
+
+    private void miDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miDeleteActionPerformed
+        if(tableVelcoity.getSelectedRow() < 0) {
+            JOptionPane.showMessageDialog(this, "select a row to delete");
+            return;
+        }
+        model.delete(tableVelcoity.getSelectedRow());
+    }//GEN-LAST:event_miDeleteActionPerformed
 
     /**
      * @param args the command line arguments

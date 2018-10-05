@@ -45,6 +45,11 @@ public class VelocityTableModel extends AbstractTableModel{
         fireTableRowsInserted(measurements.size()-1, measurements.size()-1);
     }
     
+    public void delete(int idx) {
+        measurements.remove(idx);
+        fireTableRowsDeleted(idx, idx);
+    }
+    
     public void saveData(File f) throws Exception {
         ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(f));
 
