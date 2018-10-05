@@ -1,8 +1,6 @@
 
 import java.awt.Color;
-import java.awt.Component;
 import javax.swing.JLabel;
-import javax.swing.JTable;
 import javax.swing.table.TableCellRenderer;
 import java.awt.Component;
 import javax.swing.JTable;
@@ -26,7 +24,7 @@ public class MyTableCellRenderer implements TableCellRenderer {
         } else if (m.getExceedence() <= 10) {
             label.setBackground(Color.BLUE);
         }
-
+        return label;
     }
 
 }
